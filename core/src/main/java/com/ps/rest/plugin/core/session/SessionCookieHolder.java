@@ -53,14 +53,16 @@ public class SessionCookieHolder {
 
 	private static void updateCookies(Map<String, String> cookieMap,
 			Map<String, ? extends Iterable<String>> responseHeaders) {
-		for (String responseHeader : responseHeaders.get("Set-Cookie")) {
-			String[] responseHeaderArray = responseHeader.split(";");
-			for (String cookieInfo : responseHeaderArray) {
-				try {
-					String[] cookieKeyValPair = cookieInfo.split("=");
-					cookieMap.put(cookieKeyValPair[0], cookieKeyValPair[1]);
-				} catch (Exception e) {
-					System.out.println("Skipped: " + cookieInfo);
+		if (responseHeaders.containsKey("Set-Cookie")) {
+			for (String responseHeader : responseHeaders.get("Set-Cookie")) {
+				String[] responseHeaderArray = responseHeader.split(";");
+				for (String cookieInfo : responseHeaderArray) {
+					try {
+						String[] cookieKeyValPair = cookieInfo.split("=");
+						cookieMap.put(cookieKeyValPair[0], cookieKeyValPair[1]);
+					} catch (Exception e) {
+						System.out.println("Skipped: " + cookieInfo);
+					}
 				}
 			}
 		}

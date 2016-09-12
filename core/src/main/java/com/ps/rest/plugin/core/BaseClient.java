@@ -84,7 +84,7 @@ public class BaseClient {
 		switch (httpMethod) {
 		case GET:
 			response = RestClientFactory.getInstance().getRestClient()
-					.get(url, queryString, headers, payload);
+					.get(url, queryString, headers, sessionIdentifier);
 			break;
 		case POST:
 			response = RestClientFactory.getInstance().getRestClient()
