@@ -22,15 +22,16 @@ public class BaseClient {
 		this.sessionIdentifier = sessionIdentifier;
 	}
 
-	public BaseClient(String sessionIdentifier) {
-		this.sessionIdentifier = sessionIdentifier;
-	}
-
 	public String getBaseUrl() {
 		return baseUrl;
 	}
 
 	public void setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+	}
+
+	public BaseClient(String sessionIdentifier, String baseUrl) {
+		this.sessionIdentifier = sessionIdentifier;
 		this.baseUrl = baseUrl;
 	}
 
