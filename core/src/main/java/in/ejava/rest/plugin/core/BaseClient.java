@@ -6,8 +6,6 @@ import in.ejava.rest.plugin.core.jaxb.JaxbMarshallingUtil;
 
 import java.util.Map;
 
-import org.springframework.http.HttpMethod;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
