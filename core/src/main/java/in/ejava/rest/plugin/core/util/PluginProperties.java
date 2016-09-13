@@ -1,4 +1,4 @@
-package com.ps.rest.plugin.core.util;
+package in.ejava.rest.plugin.core.util;
 
 import java.io.File;
 import java.io.FileInputStream;

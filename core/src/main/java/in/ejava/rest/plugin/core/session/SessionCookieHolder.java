@@ -1,4 +1,4 @@
-package com.ps.rest.plugin.core.session;
+package in.ejava.rest.plugin.core.session;
 
 import java.util.HashMap;
 import java.util.Map;

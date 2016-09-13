@@ -1,4 +1,4 @@
-package com.ps.rest.plugin.core.client;
+package in.ejava.rest.plugin.core.client;
 
 import org.springframework.web.client.RestTemplate;
 

@@ -1,4 +1,4 @@
-package com.ps.rest.plugin.core.client;
+package in.ejava.rest.plugin.core.client;
 
 import java.util.Map;
 

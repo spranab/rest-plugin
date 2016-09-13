@@ -1,4 +1,4 @@
-package com.ps.rest.plugin.core.jaxb;
+package in.ejava.rest.plugin.core.jaxb;
 
 import java.io.StringReader;
 import java.io.StringWriter;

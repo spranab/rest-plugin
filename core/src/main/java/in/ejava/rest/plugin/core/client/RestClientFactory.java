@@ -1,4 +1,6 @@
-package com.ps.rest.plugin.core.client;
+package in.ejava.rest.plugin.core.client;
+
+import in.ejava.rest.plugin.core.session.SessionCookieHolder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,8 +19,6 @@ import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.ssl.TrustStrategy;
-
-import com.ps.rest.plugin.core.session.SessionCookieHolder;
 
 public class RestClientFactory {
 	private RestClient restClient;

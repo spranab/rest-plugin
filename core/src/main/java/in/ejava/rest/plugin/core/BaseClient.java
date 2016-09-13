@@ -1,4 +1,8 @@
-package com.ps.rest.plugin.core;
+package in.ejava.rest.plugin.core;
+
+import in.ejava.rest.plugin.core.client.Response;
+import in.ejava.rest.plugin.core.client.RestClientFactory;
+import in.ejava.rest.plugin.core.jaxb.JaxbMarshallingUtil;
 
 import java.util.Map;
 
@@ -6,9 +10,6 @@ import org.springframework.http.HttpMethod;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ps.rest.plugin.core.client.Response;
-import com.ps.rest.plugin.core.client.RestClientFactory;
-import com.ps.rest.plugin.core.jaxb.JaxbMarshallingUtil;
 
 public class BaseClient {
 	private String sessionIdentifier;
