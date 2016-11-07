@@ -4,7 +4,7 @@
 
 	<groupId>in.ejava</groupId>
 	<artifactId>rest.plugin.core</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>core</name>

@@ -37,8 +37,16 @@ public class BaseClient {
 	public Object makeCall(String url, HttpMethod httpMethod,
 			Map<String, String> headers, String queryString, String payload,
 			DataType responseDataType, Class typeReference) throws Exception {
+		return makeCall(url, httpMethod, headers, queryString, payload,
+				responseDataType, typeReference, true);
+	}
+
+	public Object makeCall(String url, HttpMethod httpMethod,
+			Map<String, String> headers, String queryString, String payload,
+			DataType responseDataType, Class typeReference,
+			boolean followRedirect) throws Exception {
 		Response response = getResponse(url, httpMethod, headers, queryString,
-				payload);
+				payload, followRedirect);
 
 		switch (responseDataType) {
 		case JSON:
@@ -59,8 +67,16 @@ public class BaseClient {
 			Map<String, String> headers, String queryString, String payload,
 			DataType responseDataType, TypeReference typeReference)
 			throws Exception {
+		return makeCall(url, httpMethod, headers, queryString, payload,
+				responseDataType, typeReference, true);
+	}
+
+	public Object makeCall(String url, HttpMethod httpMethod,
+			Map<String, String> headers, String queryString, String payload,
+			DataType responseDataType, TypeReference typeReference,
+			boolean followRedirect) throws Exception {
 		Response response = getResponse(url, httpMethod, headers, queryString,
-				payload);
+				payload, followRedirect);
 
 		switch (responseDataType) {
 		case JSON:
@@ -79,23 +95,38 @@ public class BaseClient {
 	private Response getResponse(String url, HttpMethod httpMethod,
 			Map<String, String> headers, String queryString, String payload)
 			throws Exception {
+		return getResponse(url, httpMethod, headers, queryString, payload, true);
+	}
+
+	private Response getResponse(String url, HttpMethod httpMethod,
+			Map<String, String> headers, String queryString, String payload,
+			boolean followRedirect) throws Exception {
 		Response response = null;
 		switch (httpMethod) {
 		case GET:
-			response = RestClientFactory.getInstance().getRestClient()
-					.get(url, queryString, headers, sessionIdentifier);
+			response = RestClientFactory
+					.getInstance()
+					.getRestClient()
+					.get(url, queryString, headers, sessionIdentifier,
+							followRedirect);
 			break;
 		case POST:
-			response = RestClientFactory.getInstance().getRestClient()
-					.post(url, payload.getBytes(), headers, sessionIdentifier);
+			response = RestClientFactory
+					.getInstance()
+					.getRestClient()
+					.post(url, payload.getBytes(), headers, sessionIdentifier,
+							followRedirect);
 			break;
 		case PUT:
-			response = RestClientFactory.getInstance().getRestClient()
-					.put(url, payload.getBytes(), headers, sessionIdentifier);
+			response = RestClientFactory
+					.getInstance()
+					.getRestClient()
+					.put(url, payload.getBytes(), headers, sessionIdentifier,
+							followRedirect);
 			break;
 		case DELETE:
 			response = RestClientFactory.getInstance().getRestClient()
-					.delete(url, headers, sessionIdentifier);
+					.delete(url, headers, sessionIdentifier, followRedirect);
 			break;
 
 		default:

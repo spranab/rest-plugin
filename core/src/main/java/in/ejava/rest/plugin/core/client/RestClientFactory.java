@@ -61,34 +61,73 @@ public class RestClientFactory {
 				Map<String, String> headers, String sessionIdentifier)
 				throws Exception {
 
-			return execute("PUT", url, null, data, headers, sessionIdentifier);
+			return put(url, data, headers, sessionIdentifier, true);
+		}
+
+		public Response put(String url, byte[] data,
+				Map<String, String> headers, String sessionIdentifier,
+				boolean followRedirects) throws Exception {
+
+			return execute("PUT", url, null, data, headers, sessionIdentifier,
+					followRedirects);
 		}
 
 		public Response post(String url, byte[] data,
 				Map<String, String> headers, String sessionIdentifier)
 				throws Exception {
 
-			return execute("POST", url, null, data, headers, sessionIdentifier);
+			return post(url, data, headers, sessionIdentifier, true);
+		}
+
+		public Response post(String url, byte[] data,
+				Map<String, String> headers, String sessionIdentifier,
+				boolean followRedirects) throws Exception {
+
+			return execute("POST", url, null, data, headers, sessionIdentifier,
+					followRedirects);
 		}
 
 		public Response delete(String url, Map<String, String> headers,
 				String sessionIdentifier) throws Exception {
 
+			return delete(url, headers, sessionIdentifier, true);
+		}
+
+		public Response delete(String url, Map<String, String> headers,
+				String sessionIdentifier, boolean followRedirects)
+				throws Exception {
+
 			return execute("DELETE", url, null, null, headers,
-					sessionIdentifier);
+					sessionIdentifier, followRedirects);
 		}
 
 		public Response get(String url, String queryString,
 				Map<String, String> headers, String sessionIdentifier)
 				throws Exception {
 
+			return get(url, queryString, headers, sessionIdentifier, true);
+		}
+
+		public Response get(String url, String queryString,
+				Map<String, String> headers, String sessionIdentifier,
+				boolean followRedirects) throws Exception {
+
 			return execute("GET", url, queryString, null, headers,
-					sessionIdentifier);
+					sessionIdentifier, followRedirects);
+		}
+
+		@Deprecated
+		private Response execute(String type, String urlStr,
+				String queryString, byte[] data, Map<String, String> headers,
+				String sessionIdentifier) throws Exception {
+			return execute(type, urlStr, queryString, data, headers,
+					sessionIdentifier, true);
 		}
 
 		private Response execute(String type, String urlStr,
 				String queryString, byte[] data, Map<String, String> headers,
-				String sessionIdentifier) throws Exception {
+				String sessionIdentifier, boolean followRedirects)
+				throws Exception {
 
 			if ((queryString != null) && !queryString.isEmpty()) {
 
@@ -107,6 +146,8 @@ public class RestClientFactory {
 			}
 
 			con.setRequestMethod(type);
+
+			con.setInstanceFollowRedirects(followRedirects);
 
 			String cookieString = SessionCookieHolder
 					.getCookieString(sessionIdentifier);
